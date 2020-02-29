@@ -97,8 +97,8 @@ The code can be found [here](https://github.com/emyhr/Retail_clusters_dynamics/b
 |detergents|642|
 |others|204|
 
-##Building the model
-
+## Building the model
+We have a set of customers(receipts) P with elements p<sub>i</sub>, i=1, ..., N, where N - number of customers(receipts). For each p<sub>i</sub>, there is a vector of numbers p<sub>i</sub> = {p<sup>1</sup>, p<sup>1</sup>, p<sup>1</sup>, ..., p<sup>r</sup>}, where r - number of categories. Btw, in vector p's coordinates, superscripts don't signify powers but indices (as it is the case in maths sometimes). &sqrt
 
 ##Phases of work:
 
