@@ -137,6 +137,7 @@ SST = &sum;<sub>i=1</sub><sup>n</sup>(p<sub>i</sub>-GM),
 where p<sub>i</sub> - element from the dataset.
 3. Variance explained  
 Var = SSB/SST  
+
 For each k, variance explained is computed. Again, we need to plot a graph with k as X-axis, and Variance explained as Y-axis. Let's consider the same dataset as before.  
 ![elbow2](img/elbow2.png)  
 Here, we also see a leap and smooth growth of the function. However, this time, there are two points that draw our attention. The first one is also k=6 as in the previous case, second one is k=9. It turns out, it is not as obvious as before. Nevertheless, according to the "elbow" rule, we need to choose a point after which speed of growth(decrease) of the function sinks, which is satisfied, strictly speaking, only at k=6, because after k=9, the function not just reduces its speed of growth but itself starts to decrease. Later, after k=11, the function behaves unstable. The code is in the [module](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/coursework.py). 
