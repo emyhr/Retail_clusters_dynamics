@@ -117,19 +117,32 @@ Code of vector initialisation is given [here](https://github.com/emyhr/Retail_cl
 For clustering, [KMeans](https://en.wikipedia.org/wiki/K-means_clustering) algorithm was used. I think, everyone knows how it works, if someone doesn't, just follow the given link. The implementation code of this and all of the others methods and algorithms used in this work is given in this [module](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/coursework.py).  
 Here, it is applied on the sample of one of the time points with k=3.
 ![kmeans](/img/kmeans.png)
-![kmeans_](/img/kmeans_.png)
+![kmeans_](/img/kmeans_.png)  
 But the question is how do we know what k to choose? What number of clusters will optimal? [Elbow method](https://en.wikipedia.org/wiki/Elbow_method_(clustering)) is your friend here. Since not so many people know about the Elbow method, let me explain it right here. So, the main idea is to choose such number of clusters, that adding one more cluster will not improve the model. In the Elbow method, different criteria can be used for determining the optimal k. I used two: average distance from points to cluster centroid and variance explained.
 
 ### Average distance criterion
 
-First, we need to calculate the distances between each point and the centroid of the cluster the point belongs to. Then, the average of those distance is computed. Now, we plot the graph with the number of clusters k as X-axis and the average distance as Y-axis. Let's plot this graph for the dataset of one day.
-![elbow](/img/elbow.png)
+First, we need to calculate the distances between each point and the centroid of the cluster the point belongs to. Then, the average of those distance is computed. Now, we plot the graph with the number of clusters k as X-axis and the average distance as Y-axis. Let's plot this graph for the dataset of one day.  
+![elbow](/img/elbow.png)  
 At some value of k=k<sub>optimal</sub>, we can see significant drop of the average distance, after which the slope becomes more smooth, uniform. Exactly this values k is considered optimal. In this case, it is k=6. The logic behind is that if we divide the sample into 6 clusters, those clusters will be more closely grouped. However, this value should not be very big or small(one cluster - the biggest avg distance, as many clusters as points - avg distance is 0). 
 
+### Variance explained
 
-##1. Data cleaning and preprocessing
+For better understanding of this part, we need to introduce several [notions](http://davidmlane.com/hyperstat/B160638.html):
+1. Sum of Squares Between Groups  
+SSB = &sum;<sub>i=1</sub><sup>k</sup>m<sub>i</sub>(M<sub>i</sub>-GM)<sup>2</sup>,
+where m<sub>i</sub> - cluster cardinality, M<sub>i</sub> - average cluster value, GM - global average value (of the whole dataset).
+2. Sum of Squares Total  
+SST = &sum;<sub>i=1</sub><sup>n</sup>(p<sub>i</sub>-GM),
+where p<sub>i</sub> - element from the dataset.
+3. Variance explained  
+Var = SSB/SST  
+For each k, variance explained is computed. Again, we need to plot a graph with k as X-axis, and Variance explained as Y-axis. Let's consider the same dataset as before.
+![elbow2](img/elbow2.png)  
+Here, we also see a leap and smooth growth of the function. However, this time, there are two points that draw our attention. The first one is also k=6 as in the previous case, second one is k=9. It turns out, it is not as obvious as before. Nevertheless, according to the "elbow" rule, we need to choose a point after which speed of growth(decrease) of the function sinks, which is satisfied, strictly speaking, only at k=6, because after k=9, the function not just reduces its speed of growth but itself starts to decrease. Later, after k=11, the function behaves unstable. The code is in the [module](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/coursework.py). 
+
+Another method, which I've implemented is Silhoette Score. It shows how well each element was clustered. Silhoette Score value shows the similarity of the element with its cluster compared to other clusters. You can read more about the method [here](https://en.wikipedia.org/wiki/Silhouette_(clustering)).
 
 
 
-[Detailed description of the thesis](https://medium.com/p/3b1aa6f15c8e/edit)
  
