@@ -71,7 +71,7 @@ For sorting, I used 're' Python library. The algorithm is the following:
 2. Product name and product id are read;
 3. Product name is tested for containment of keywords from the first list and for absence of values from the second list;
 4. If the previous condition is satisfied, the product id is written to the file of that category.
-The code can be found [here](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/sorting_products.ipynb)
+The code can be found [here](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/sorting_products.ipynb).
 
 |Category|Number of products|
 |:---:|:---:|
@@ -101,7 +101,7 @@ The code can be found [here](https://github.com/emyhr/Retail_clusters_dynamics/b
 We have a set of customers(receipts) P with elements p<sub>i</sub>, i=1, ..., N, where N - number of customers(receipts). For each p<sub>i</sub>, there is a vector of numbers p<sub>i</sub> = {p<sup>1</sup>, p<sup>1</sup>, p<sup>1</sup>, ..., p<sup>r</sup>}, where r - number of categories(equals 21). Btw, in vector p's coordinates, superscripts don't signify powers but indices (as it is the case in maths sometimes). Values p<sub>i</sub> are the numbers of product items customer purchased from the corresponding category. In this model, euclidean metrics is used for distance calculations.
 
 ## Time points
-Provided files contained list of receipts of one year. To increase the volume of the sample in a time point, three days were merged into a single time point. The code is [here](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/time_period.ipynb)
+Provided files contained list of receipts of one year. To increase the volume of the sample in a time point, three days were merged into a single time point. The code is [here](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/time_period.ipynb).
 
 ## Vector initialisation
 1. Consider one receipt. Extract list of product ids;
@@ -110,7 +110,7 @@ Provided files contained list of receipts of one year. To increase the volume of
 4. Repeat step 3 for all of the categories;
 5. Repeat the whole process for each receipt.
 
-Code of vector initialisation is given [here](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/init_coord.ipynb)
+Code of vector initialisation is given [here](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/init_coord.ipynb).
 
 ## Clustering
 
@@ -137,7 +137,7 @@ SST = &sum;<sub>i=1</sub><sup>n</sup>(p<sub>i</sub>-GM),
 where p<sub>i</sub> - element from the dataset.
 3. Variance explained  
 Var = SSB/SST  
-For each k, variance explained is computed. Again, we need to plot a graph with k as X-axis, and Variance explained as Y-axis. Let's consider the same dataset as before.
+For each k, variance explained is computed. Again, we need to plot a graph with k as X-axis, and Variance explained as Y-axis. Let's consider the same dataset as before.  
 ![elbow2](img/elbow2.png)  
 Here, we also see a leap and smooth growth of the function. However, this time, there are two points that draw our attention. The first one is also k=6 as in the previous case, second one is k=9. It turns out, it is not as obvious as before. Nevertheless, according to the "elbow" rule, we need to choose a point after which speed of growth(decrease) of the function sinks, which is satisfied, strictly speaking, only at k=6, because after k=9, the function not just reduces its speed of growth but itself starts to decrease. Later, after k=11, the function behaves unstable. The code is in the [module](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/coursework.py). 
 
