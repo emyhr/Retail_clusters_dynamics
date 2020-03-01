@@ -98,16 +98,34 @@ The code can be found [here](https://github.com/emyhr/Retail_clusters_dynamics/b
 |others|204|
 
 ## Building the model
-We have a set of customers(receipts) P with elements p<sub>i</sub>, i=1, ..., N, where N - number of customers(receipts). For each p<sub>i</sub>, there is a vector of numbers p<sub>i</sub> = {p<sup>1</sup>, p<sup>1</sup>, p<sup>1</sup>, ..., p<sup>r</sup>}, where r - number of categories. Btw, in vector p's coordinates, superscripts don't signify powers but indices (as it is the case in maths sometimes). &sqrt
+We have a set of customers(receipts) P with elements p<sub>i</sub>, i=1, ..., N, where N - number of customers(receipts). For each p<sub>i</sub>, there is a vector of numbers p<sub>i</sub> = {p<sup>1</sup>, p<sup>1</sup>, p<sup>1</sup>, ..., p<sup>r</sup>}, where r - number of categories(equals 21). Btw, in vector p's coordinates, superscripts don't signify powers but indices (as it is the case in maths sometimes). Values p<sub>i</sub> are the numbers of product items customer purchased from the corresponding category. In this model, euclidean metrics is used for distance calculations.
 
-##Phases of work:
+## Time points
+Provided files contained list of receipts of one year. To increase the volume of the sample in a time point, three days were merged into a single time point. The code is [here](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/time_period.ipynb)
 
-1. Data cleaning and preprocessing;
+## Vector initialisation
+1. Consider one receipt. Extract list of product ids;
+2. Extract list of product ids of the first category;
+3. Count number of product ids of that category contained in the list of product ids in the receipt. Assign the result to the first coordinate of the vector;
+4. Repeat step 3 for all of the categories;
+5. Repeat the whole process for each receipt.
 
-2. Sorting products into categories;
-3. Initialising coordinates for each receipt;
-4. Clustering;
-5. Visualisation;
+Code of vector initialisation is given [here](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/init_coord.ipynb)
+
+## Clustering
+
+For clustering, [KMeans](https://en.wikipedia.org/wiki/K-means_clustering) algorithm was used. I think, everyone knows how it works, if someone doesn't, just follow the given link. The implementation code of this and all of the others methods and algorithms used in this work is given in this [module](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/coursework.py).  
+Here, it is applied on the sample of one of the time points with k=3.
+![kmeans](/img/kmeans.png)
+![kmeans_](/img/kmeans_.png)
+But the question is how do we know what k to choose? What number of clusters will optimal? [Elbow method](https://en.wikipedia.org/wiki/Elbow_method_(clustering)) is your friend here. Since not so many people know about the Elbow method, let me explain it right here. So, the main idea is to choose such number of clusters, that adding one more cluster will not improve the model. In the Elbow method, different criteria can be used for determining the optimal k. I used two: average distance from points to cluster centroid and variance explained.
+
+### Average distance criterion
+
+First, we need to calculate the distances between each point and the centroid of the cluster the point belongs to. Then, the average of those distance is computed. Now, we plot the graph with the number of clusters k as X-axis and the average distance as Y-axis. Let's plot this graph for the dataset of one day.
+![elbow](/img/elbow.png)
+At some value of k=k<sub>optimal</sub>, we can see significant drop of the average distance, after which the slope becomes more smooth, uniform. Exactly this values k is considered optimal. In this case, it is k=6. The logic behind is that if we divide the sample into 6 clusters, those clusters will be more closely grouped. However, this value should not be very big or small(one cluster - the biggest avg distance, as many clusters as points - avg distance is 0). 
+
 
 ##1. Data cleaning and preprocessing
 
