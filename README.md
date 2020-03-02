@@ -144,6 +144,16 @@ Here, we also see a leap and smooth growth of the function. However, this time, 
 
 Another method, which I've implemented is Silhoette Score. It shows how well each element was clustered. Silhoette Score value shows the similarity of the element with its cluster compared to other clusters. You can read more about the method [here](https://en.wikipedia.org/wiki/Silhouette_(clustering)).
 
+## Dimensionality reduction. The PCA Method
+
+As I have already mentioned in the model description, we are working with high-dimensional data. Each category is a dimension, thus, we have 21 dimensions. But how do we visualise 21-dimensional objects? We use [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis). There are quite a number of articles on Medium explaining the method, so I won't do it here(also writing maths expressions in markdown is not enjoyable).  
+You have already seen the results of PCA applied to the dataset, in the clustering section. However, let's look at some pictures again.  
+Scale down to 2 dimensions  
+![kmeans](/img/kmeans.png)  
+Scale down to 3 dimensions  
+![3d2](/img/3d2.png)
+![3d](/img/3d.png)
+
 
 
  
