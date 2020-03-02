@@ -146,7 +146,7 @@ Another method, which I've implemented is Silhoette Score. It shows how well eac
 
 ## Dimensionality reduction. The PCA Method
 
-As I have already mentioned in the model description, we are working with high-dimensional data. Each category is a dimension, thus, we have 21 dimensions. But how do we visualise 21-dimensional objects? We use [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis). There are quite a number of articles on Medium explaining the method, so I won't do it here(also writing maths expressions in markdown is not enjoyable).  
+As I have already mentioned in the model description, we are working with high-dimensional data. Each category is a dimension, thus, we have 21 dimensions. But how do we visualise 21-dimensional objects? We use [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis). There are quite a number of articles on Medium explaining the method, so I won't do it here(also writing maths expressions in markdown is not enjoyable). I couldn't find the one I read to understand the algorithm but most of them are quite good. I definitely recommend getting familiar with PCA.  
 You have already seen the results of PCA applied to the dataset, in the clustering section. However, let's look at some pictures again.  
 Scale down to 2 dimensions  
 ![kmeans](/img/kmeans.png)  
@@ -154,6 +154,15 @@ Scale down to 3 dimensions
 ![3d2](/img/3d2.png)
 ![3d](/img/3d.png)
 
+## Multidimensional ellipsoid
+
+This part was actually made by me, and I didn't read it out anywhere. So, the idea my supervisor and I had, was to approximate the clusters with ellipsoids, and then try to model just the ellipsoids.  
+This is the equation of an ordinary 3-dimensional ellipsoid:  
+x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> + z<sup>2</sup>/c<sup>2</sup> = 1  
+So, for multidimensional version, it will be:  
+&sum;<sub>i=1</sub><sup>r</sup>X<sub>i</sub><sup>2</sup>/a<sub>i</sub><sup>2</sup>=1, where X<sub>i</sub> - space coordinates, a<sub>i</sub> - corresponding semi-axes.  
+The main task is defining the semi-axes in such a way that the ellipsoid would capture the biggest possible number of points and still would have minimal size. Since the cetroid of a cluster is defined as a mean of all the cluster points, we can take it as the centre of the ellipsoid. Corresponding standard deviations &sigma;<sub>i</sub> will serve as the semi-axes. Final equation will look like this  
+![ellip_eq](/img/ellipsoid_equation.png)
 
 
  
