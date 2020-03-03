@@ -162,7 +162,34 @@ x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> + z<sup>2</sup>/c<sup>
 So, for multidimensional version, it will be:  
 &sum;<sub>i=1</sub><sup>r</sup>X<sub>i</sub><sup>2</sup>/a<sub>i</sub><sup>2</sup>=1, where X<sub>i</sub> - space coordinates, a<sub>i</sub> - corresponding semi-axes.  
 The main task is defining the semi-axes in such a way that the ellipsoid would capture the biggest possible number of points and still would have minimal size. Since the cetroid of a cluster is defined as a mean of all the cluster points, we can take it as the centre of the ellipsoid. Corresponding standard deviations &sigma;<sub>i</sub> will serve as the semi-axes. Final equation will look like this  
-![ellip_eq](/img/ellipsoid_equation.png)
+![ellip_eq](/img/ellipsoid_equation.png) 
+
+For visualising I used the PCA method. The dimensionality was reduced to 3, clustering was conducted using k-means. As a result of the previous actions, we had clusters in 3D space. Let's try covering one of them with an ellipsoid. 
+![ellipsoid](/img/ellipsoid.png)  
+The fraction of points which are inside the ellipsoid is 20%. Information about the other clusters is given in the following table:
+|Cluster #|% points inside the ellipsoid|Total number of points in the cluster|
+|:---:|:---:|:---:|
+|1|15|85|
+|2|20|103|
+|3|14|126|
+|4|36|5926|
+|5|29|131|
+|6|33|598|  
+As we can see, percentage of cluster points included in the ellipsoid is less than a half, on average among all clusters it is less than a quarter. Thus, semi-axes have to be increased at minimum size of the ellipsoids. The enlargement is done according to these steps:
+1. Set a threshold of 95% of all cluster points to be included inside the ellipsoid;
+2. Count the number of points inside the ellipsoid;
+3. Assign new values to the semi-axes proportional to the old values(it is done to preserve the shape of the ellipsoid which is optimal for the corresponding cluster):  
+a<sub>new i</sub> = a<sub>i</sub>&omega;, &omega; - enlargement coefficient;
+4. Repeat the process until the threshold is reached.  
+By applying the steps above to the shown cluster, I got the following result.  
+![ellipsoid_new](/img/ellipsoid_new.png)  
+In this case, the percentage of points which are covered by the ellipsoid is 95.1%.  
+Remember, we can apply this algorithm to ellipsoids of any dimensionality. In the example, I chose a 3D ellipsoid for the sake of visualisation. The code is [here](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/visualisation.ipynb).
+
+## Correspondence of clusters
+
+To build the model of cluster dynamics, we need to establish correspondence between them in different points of time.
+
 
 
  
