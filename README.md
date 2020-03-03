@@ -175,6 +175,7 @@ The fraction of points which are inside the ellipsoid is 20%. Information about 
 |4|36|5926|
 |5|29|131|
 |6|33|598|  
+
 As we can see, percentage of cluster points included in the ellipsoid is less than a half, on average among all clusters it is less than a quarter. Thus, semi-axes have to be increased at minimum size of the ellipsoids. The enlargement is done according to these steps:
 1. Set a threshold of 95% of all cluster points to be included inside the ellipsoid;
 2. Count the number of points inside the ellipsoid;
