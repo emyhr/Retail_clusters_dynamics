@@ -191,6 +191,35 @@ Remember, we can apply this algorithm to ellipsoids of any dimensionality. In th
 
 To build the model of cluster dynamics, we need to establish correspondence between them in different points of time.
 
+Criteria of similarity:
+
+* cardinality (number of customers shouldn't be volatile meaning the number of people buying some set of products cannot change dramatically in 3 days)  
+
+![card](img/cardinality.png)
+
+* density (density should stay almost the same meaning customers of a cluster should behave similarly)
+
+![dense](img/density.png)
+
+In this work, I used cardinality criterion. Let's establish correpondence between clusters in first two time points.
+
+![corr](img/correspond.png)
+
+On the figure, you can see approximation of the first cluster in different time points. It is noticable that approximating ellipsoid has changed its shape in the second time point. Let's figure out why:  
+* Counting number elements of the cluster:
+  + t=1: 311 elements  
+  + t=2: 335 elements  
+  So number of elements has barely changed. Let's check another criterion: density  
+* Density (distance of cluster points from its centroid):
+  + t=1: 7190.1  
+  + t=2: 6418.4  
+  Comparing semi-axes of the two ellipsoids:  
+  + t=1: (12.3; 19.4; 10.6)  
+  + t=2: (12.9; 12.1; 10.6)  
+Now, it's clear, why ellipsoid got squeezed in t=2 - density has decreased, hence, second semi-axis significantly decreased whereas the other semi-axes stayed the same.
+ 
+
+
 
 
  
