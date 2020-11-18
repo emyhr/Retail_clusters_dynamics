@@ -3,7 +3,7 @@
 
 This was my bachelor thesis at Bauman Moscow State Technical University (BMSTU). The idea behind is to clusterise customers and to model their behaviour throughout a given period of time. The data used in this project was provided to the department by a Russian network of grocery shops. 
 
-Source files: 15 csv-files containing anonimised receipts of customers. Each of the files had around 1 million rows.
+Source files: 15 csv-files containing anonymised receipts of customers. Each of the files had around 1 million rows.
 ## Data preparation
 ### Data cleaning
 Excerpt from one of the files  
