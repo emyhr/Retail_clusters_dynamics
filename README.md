@@ -98,7 +98,7 @@ The code can be found [here](https://github.com/emyhr/Retail_clusters_dynamics/b
 |others|204|
 
 ## Building the model
-We have a set of customers(receipts) P with elements p<sub>i</sub>, i=1, ..., N, where N - number of customers(receipts). For each p<sub>i</sub>, there is a vector of numbers p<sub>i</sub> = {p<sup>1</sup>, p<sup>1</sup>, p<sup>1</sup>, ..., p<sup>r</sup>}, where r - number of categories(equals 21). Btw, in vector p's coordinates, superscripts don't signify powers but indices (as it is the case in maths sometimes). Values p<sub>i</sub> are the numbers of product items customer purchased from the corresponding category. In this model, euclidean metrics is used for distance calculations.
+We have a set of customers(receipts) P with elements p<sub>i</sub>, i=1, ..., N, where N - number of customers(receipts). For each p<sub>i</sub>, there is a vector of numbers p<sub>i</sub> = {p<sup>1</sup>, p<sup>2</sup>, p<sup>3</sup>, ..., p<sup>r</sup>}, where r - number of categories(equals 21). Btw, in vector p's coordinates, superscripts don't signify powers but indices (as it is the case in maths sometimes). Values p<sub>i</sub> are the numbers of product items customer purchased from the corresponding category. In this model, euclidean metrics is used for distance calculations.
 
 ## Time points
 Provided files contained list of receipts of one year. To increase the volume of the sample in a time point, three days were merged into a single time point. The code is [here](https://github.com/emyhr/Retail_clusters_dynamics/blob/master/time_period.ipynb).
